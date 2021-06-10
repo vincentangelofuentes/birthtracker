@@ -1,0 +1,3 @@
+class Birthtracker < ApplicationRecord
+end
+

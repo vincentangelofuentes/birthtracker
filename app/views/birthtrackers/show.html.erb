@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @birthtracker.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @birthtracker.last_name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @birthtracker.email %>
+</p>
+
+<p>
+  <strong>Birthdate:</strong>
+  <%= @birthtracker.birthdate %>
+</p>
+
+
+<%= link_to 'Edit', edit_birthtracker_path(@birthtracker),class:"btn btn-info" %> 
+<%= link_to 'Back', birthtrackers_path, class:"btn btn-info" %>

@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<!--<h1>Employees</h1>-->
+
+<table class="table table table-bordered table table-hover">
+  <thead class="table-dark">
+    
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Email</th>
+      <th>Birthdate</th>
+      <th>Status</th>
+      <th>Gift Received</th>
+      
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @birthtrackers.each do |birthtracker| %>
+      <tr>
+        
+        <td><%= birthtracker.first_name %></td>
+        <td><%= birthtracker.last_name %></td>
+        <td><%= birthtracker.email %></td>
+        <td><%= birthtracker.birthdate.strftime("%m-%d-%Y") %></td>
+        <%= birthtracker.status %>
+        <% if birthtracker.birthdate.strftime("%m-%d%") > @thisWeek.strftime("%m-%d%") %>
+        <td style="background-color:#FFFF00"><%= birthtracker.status %></td>
+        <% elsif birthtracker.birthdate.strftime("%m-%d%") < @thisWeek.strftime("%m-%d%") %>
+        <td style="background-color:#008000"><%= birthtracker.status %></td>
+        <% else birthtracker.birthdate.strftime("%m-%d") == @date.strftime("%m-%d") %>
+        <td style="background-color:#FF0000"><%= birthtracker.status %></td>
+        <% end %>
+        <% if birthtracker.birthdate.strftime("%m-%d") >= @thisWeek.strftime("%m-%d") %>
+        <td>false</td>
+        <%elsif birthtracker.birthdate.strftime("%m-%d") < @thisWeek.strftime("%m-%d") %>
+        <td>true</td>
+        <% end %>
+        <%=birthtracker.gift_received %>
+        <td><%= link_to 'Show', birthtracker %></td>
+        <td><%= link_to 'Edit', edit_birthtracker_path(birthtracker) %></td>
+        <td><%= link_to 'Destroy', birthtracker, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Employees', new_birthtracker_path, class:"btn btn-info" %>
+
